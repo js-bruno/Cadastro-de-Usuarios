@@ -45,7 +45,7 @@ export default class CadastroCliente extends Component{
         }
         return(
 
-            <div className="container" > 
+            <div className="container" >
               <div className="content-register">         
                 <div id="cadastro">
                   <form onSubmit={this.handleOnSubmit}> 
@@ -72,6 +72,7 @@ export default class CadastroCliente extends Component{
                     </div>
                   </form>
                 </div>
+                
               </div>
           </div>
 
