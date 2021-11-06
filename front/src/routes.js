@@ -1,12 +1,12 @@
 import React from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import Home from './pages/home';
-import EditClientes from './pages/EditCliente'
-import AddClientes from './pages/AddCliente'
+import Home from './pages/Home';
+import EditClientes from './pages/EditClientes';
+import AddClientes from './pages/AddClientes';
 
+export default function Routes(){
 
-export default function Routes() {
-    return (
+    return(
         <BrowserRouter>
             <Switch>
                 <Route path='/' exact component={Home}/>
@@ -14,5 +14,6 @@ export default function Routes() {
                 <Route path='/add' component={AddClientes}/>
             </Switch>
         </BrowserRouter>
-    )
+    );
+
 }

@@ -5,8 +5,6 @@ exports.createCliente = (req, res) => {
     let cliente = {};
     
     try {
-        console.log(req.body)
-        // TODO: Deixar o código mais limpo.
         cliente.nome = req.body.nome;
         cliente.email = req.body.email;
         cliente.idade = req.body.idade;
@@ -82,7 +80,6 @@ exports.deleteCliente = async (req, res) => {
 exports.updateCliente = async (req, res) => {
     try {
         let cliente = await Cliente.findByPk(req.body.id);
-        
         if(!cliente) {
             res.status(404).json({
                 message: "Não foi encontrando nenhum cliente com id: " + clienteId,
@@ -98,13 +95,15 @@ exports.updateCliente = async (req, res) => {
                                 .update(updateObject, {
                                     returning: true,
                                     where: {id: req.body.id},
-                                    attributes: ['id', 'nome', 'email', 'idade']
+                                    attributes: ['nome', 'email', 'idade']
                                 })
             if (!result) {
-                res.staus(500).json( {
+                res.status(500).json( {
                     message: "Error -> Não houve alteração no cliente Id: " + req.params.id,
                     error: "Não pode ser alterado",
                 })
+            } else {
+                res.status(200).json('cliente deletado com sucesso.')
             }
         }
     } catch (error) {
